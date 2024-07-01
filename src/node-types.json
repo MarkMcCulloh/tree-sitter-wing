@@ -16,6 +16,10 @@
         "named": true
       },
       {
+        "type": "non_interpolated_string",
+        "named": true
+      },
+      {
         "type": "number",
         "named": true
       },
@@ -62,6 +66,10 @@
         "named": true
       },
       {
+        "type": "intrinsic",
+        "named": true
+      },
+      {
         "type": "json_literal",
         "named": true
       },
@@ -71,10 +79,6 @@
       },
       {
         "type": "new_expression",
-        "named": true
-      },
-      {
-        "type": "optional_test",
         "named": true
       },
       {
@@ -328,6 +332,10 @@
         },
         {
           "type": "interface_definition",
+          "named": true
+        },
+        {
+          "type": "lift_statement",
           "named": true
         },
         {
@@ -782,6 +790,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "doc",
+    "named": true,
+    "fields": {
+      "content": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "doc_content",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1455,6 +1479,16 @@
           }
         ]
       },
+      "ctor_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "new",
+            "named": false
+          }
+        ]
+      },
       "inflight": {
         "multiple": false,
         "required": false,
@@ -1570,6 +1604,32 @@
     }
   },
   {
+    "type": "intrinsic",
+    "named": true,
+    "fields": {
+      "args": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "intrinsic_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "json_container_type",
     "named": true,
     "fields": {}
@@ -1660,6 +1720,90 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "lift_qualification",
+    "named": true,
+    "fields": {
+      "obj": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "ops": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "lift_qualifications",
+    "named": true,
+    "fields": {
+      "qualification": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "lift_qualification",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "lift_statement",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "lift_qualifications": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "lift_qualifications",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2174,6 +2318,11 @@
     }
   },
   {
+    "type": "non_interpolated_string",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "number",
     "named": true,
     "fields": {}
@@ -2212,21 +2361,6 @@
         },
         {
           "type": "optional",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "optional_test",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
           "named": true
         }
       ]
@@ -2395,6 +2529,21 @@
     }
   },
   {
+    "type": "parenthesized_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "positional_argument",
     "named": true,
     "fields": {},
@@ -2524,6 +2673,10 @@
         },
         {
           "type": "interface_definition",
+          "named": true
+        },
+        {
+          "type": "lift_statement",
           "named": true
         },
         {
@@ -2906,6 +3059,16 @@
             "named": true
           }
         ]
+      },
+      "parenthesized_exception_identifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "parenthesized_identifier",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -3168,6 +3331,10 @@
     "named": false
   },
   {
+    "type": "#\"",
+    "named": false
+  },
+  {
     "type": "%",
     "named": false
   },
@@ -3225,6 +3392,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "///",
     "named": false
   },
   {
@@ -3384,6 +3555,10 @@
     "named": false
   },
   {
+    "type": "doc_content",
+    "named": true
+  },
+  {
     "type": "duration",
     "named": false
   },
@@ -3456,11 +3631,19 @@
     "named": false
   },
   {
+    "type": "intrinsic_identifier",
+    "named": true
+  },
+  {
     "type": "keyword_argument_key",
     "named": true
   },
   {
     "type": "let",
+    "named": false
+  },
+  {
+    "type": "lift",
     "named": false
   },
   {
